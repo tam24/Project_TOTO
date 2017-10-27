@@ -22,3 +22,12 @@
   <?php endforeach; ?>
   </tbody>
 </table>
+<nav aria-label="Page navigation student list">
+  <ul class="pagination">
+    <li class="page-item"><a class="page-link" href="list.php?page=<?php echo $page-1?>">Previous</a></li>
+    <li class="page-item"><a class="page-link" href="href="list.php?page=<?php echo 1?>">1</a></li>
+    <li class="page-item"><a class="page-link" href="#">2</a></li>
+    <li class="page-item"><a class="page-link" href="#">3</a></li>
+    <li class="page-item"><a class="page-link" href="list.php?page=<?php echo $page+1?>">Next</a></li>
+  </ul>
+</nav>

@@ -11,12 +11,12 @@
   5 12
  */
 
-  $offset = ($page-1) *3;
+  $offset = ($page-1) * 5;
   if ($offset <= 0){
     $offset = 0;
   }
 
-  $sqlSelect = "SELECT * FROM student  LIMIT 3 OFFSET :offset";
+  $sqlSelect = "SELECT * FROM student  LIMIT 5 OFFSET :offset";
 
   $pdoStatement = $pdo->prepare($sqlSelect);
   $pdoStatement ->bindValue (':offset', $offset, PDO::PARAM_INT);

@@ -31,21 +31,9 @@ WHERE stu_id = :id
   $ageMin = $ageResult / 60;
   $ageHrs = $ageMin / 60;
   $ageDays = $ageHrs / 24;
-  $ageYrs =  intdiv($ageDays, 365 );
+  $ageYrs = floor($ageDays / 365 );
 
-  echo '<br>'.$dateBirth.' '.$dateTodayNb.' '.$ageResult.' '.$ageYrs;
-
-
-
-  /*echo '<br>'.$rowRetrieved['stu_id'].'<br>';
-  echo $rowRetrieved ['stu_lastname'].'<br>';
-  echo $rowRetrieved ['stu_firstname'].'<br>';
-  echo $rowRetrieved ['stu_email'].'<br>';
-  echo $rowRetrieved ['stu_birthdate'].'<br>';
-  echo $rowRetrieved ['stu_friendliness'].'<br>';
-  echo $rowRetrieved ['cit_name'].'<br>';
-  echo $rowRetrieved ['ses_number'].'<br>';
-*/
+  
 }
 
 
