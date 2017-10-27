@@ -10,14 +10,15 @@
     </tr>
   </thead>
   <tbody>
+    <?php foreach ($rowRetrieved as $index=>$rowValues):?>
     <tr>
-      <?php foreach ($rowRetrieved as $index=>$rowValues)?>
       <th scope="row"><?php echo $rowValues['stu_id']?></th>
       <td><?php echo $rowValues['stu_firstname']?></td>
       <td><?php echo $rowValues['stu_lastname']?></td>
       <td><?php echo $rowValues['stu_email']?></td>
       <td><?php echo $rowValues['stu_birthdate']?></td>
+      <td><a href="student.php?id=<?php echo $rowValues['stu_id']?>" class="btn btn-success">Details </a> </td>
     </tr>
-
+  <?php endforeach; ?>
   </tbody>
 </table>

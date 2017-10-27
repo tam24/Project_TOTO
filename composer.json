@@ -1,0 +1,14 @@
+{
+    "name": "tam24/project_toto",
+    "description": "Managing student data for Webforce3",
+    "type": "project",
+    "authors": [
+        {
+            "name": "tam24",
+            "email": "tam.escalante@gmail.com"
+        }
+    ],
+    "require": {
+        "social-links/social-links": "^1.13"
+    }
+}
