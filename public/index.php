@@ -3,7 +3,7 @@
 // Iclude configuration
 require_once __DIR__.'/../inc/config.php';
 
-//all things (TODO)
+//all things put the joins for the session
 
 
 
