@@ -6,7 +6,7 @@ if (empty($_GET['id'])){
   echo 'Student not found';
 }
 
-else {
+else { //original select
   $sqlSelect = "SELECT stu_lastname, stu_firstname, stu_email, stu_birthdate, stu_friendliness, cit_name, ses_number
 FROM student
 INNER JOIN city ON city.cit_id = student.city_cit_id
@@ -33,7 +33,7 @@ WHERE stu_id = :id
   $ageDays = $ageHrs / 24;
   $ageYrs = floor($ageDays / 365 );
 
-  
+
 }
 
 
