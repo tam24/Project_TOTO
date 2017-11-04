@@ -1,14 +1,23 @@
 
 <div class="card">
   <div class="card-body">
-    <h1> SESSIONS </h1>
-    <br>
-    <?php foreach ($rowRetrieved as $index=>$rowValues):?>
-      <ul class="list-group"><h2> <?php echo $rowValues['tra_name']?> </h2>
-        <li class="list-group-item">Session <?php echo $rowValues['ses_number'].'  '.$rowValues['ses_start_date'].'  '.$rowValues['ses_end_date']?></li>
+    <table>
+      <?php foreach ($newArray as $index=>$content): ?>
+        <?php foreach ($content as $index=>$contentToDisplay): ?>
+          <thead>
+            <tr>
+              <th><?php echo $index ?></th>
+            </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td><?php echo $contentToDisplay ?></td>
+              </tr>
 
-      </ul>
-    <?php endforeach; ?>
+            </tbody>
+          <?php endforeach; ?>
+      <?php endforeach; ?>
+    </table>
 
   </div>
 </div>
