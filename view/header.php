@@ -39,6 +39,11 @@
            <a class="nav-link disabled" href="add.php">Add a student</a>
          </li>
 
+         <li class="nav-item">
+           <a class="nav-link disabled" href="formcsv.php">CSV Form</a>
+         </li>
+
+
        </ul>
 
        <form class="form-inline my-2 my-lg-0">
