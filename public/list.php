@@ -46,24 +46,23 @@
   }//closes else for pagination
 
   //for student deletion GET id and delete from DB
-  
-  if  { //original select
-      $sqlSelect = "SELECT stu_lastname, stu_firstname, stu_email, stu_birthdate, stu_friendliness, cit_name, ses_number
-  FROM student
-  INNER JOIN city ON city.cit_id = student.city_cit_id
-  INNER JOIN session ON session.ses_id = student.session_ses_id
-  WHERE stu_id = :id
-  ";
 
-      $pdoStatement = $pdo->prepare($sqlSelect);
-      $pdoStatement ->bindValue(':id', $_GET['id'], PDO::PARAM_INT);
+  $studentId = isset($_GET['stu_id']) ? trim($_GET['stu_id']) : '';
+
+  if (!empty($studentId)) {
+      var_dump($studentId);
+      exit;
+      $sqlDelete = "DELETE FROM student WHERE stu_id = :student_id";
+
+      $pdoStatement = $pdo->prepare($sqlDelete);
+      $pdoStatement ->bindValue(':student_id', $_GET['student_id'], PDO::PARAM_INT);
       $pdoStatement->execute();
 
       if ($pdoStatement === false) {
           print_r($pdo->errorInfo());
           exit;
       }
-
+  }//closes if for studentId deletion
 
 
   // At the end, display all views

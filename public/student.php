@@ -33,11 +33,6 @@ WHERE stu_id = :id
 }//closes else that contains $sqlSelect
 
 
-
-
-
-
-
 // At the end, display all views
 require_once __DIR__.'/../view/header.php';
 require_once __DIR__.'/../view/student.php';

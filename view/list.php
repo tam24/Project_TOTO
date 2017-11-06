@@ -18,7 +18,9 @@
         <td><?php echo $rowValues['stu_email']?></td>
         <td><?php echo $rowValues['stu_birthdate']?></td>
         <td><a href="student.php?id=<?php echo $rowValues['stu_id']?>" class="btn btn-success"> Details </a> </td>
-        <td><a href=" " class="btn btn-danger"> Delete </td>
+        <td><form name="student_id" method="GET">
+          <button type="submit" class="btn btn-danger" value="<?php $stu_id=$rowValues['stu_id']?>">Delete <?php echo $stu_id?></button>
+        </form></td>
 
       </tr>
     <?php endforeach; ?>
