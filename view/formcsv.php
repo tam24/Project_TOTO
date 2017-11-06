@@ -21,7 +21,7 @@
 				<form actions="" method="get" enctype="multipart/form-data">
 						<h1>Generate a CSV file</h1>
 					<br />
-					<input type="submit" class="btn btn-success btn-block" value="Create CSV" />
+					<input type="submit" class="btn btn-success btn-block" value="Create CSV" name="createFile"/>
 					</fieldset>
 				</form>
 

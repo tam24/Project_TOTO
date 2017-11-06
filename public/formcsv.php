@@ -37,7 +37,7 @@
 					//moves the file form a temp location to a not so temp location ''/uploaded' changing the name of the file for added SECURITY
 					//$newFileName generates a random name md5 adds data security plus a random or given chain of characters to increase the dificulty of retrieving the name of a file
 					$newFileName = md5(uniqid().'-addextrachain#').'.'.$extension;
-					if (move_uploaded_file($fileForm['tmp_name'], __DIR__.'/../uploaded/'.$newFileName)) {
+					if (move_uploaded_file($fileForm['tmp_name'], __DIR__.'/csv/'.$newFileName)) {
 						echo "File is valid, and was successfully uploaded.\n";
 					}//closes if move_uploaded_file
 					else {
@@ -49,7 +49,7 @@
 		}//closes if !empty($POST)
 
 		//Open uploaded file
-		$fileOpen = fopen(__DIR__.'/../uploaded/'.$newFileName, "r");
+		$fileOpen = fopen(__DIR__.'/csv/'.$newFileName, "r");
 
 		if ($fileOpen) {
 		    while (($buffer = fgets($fileOpen)) !== false) {
@@ -77,8 +77,29 @@
 		    fclose($fileOpen);
 		}//closes fileopen fgets
 
-		//for creating a csv file
-		
+		//for creating a csv file 'createFile' comes from name in the input of html, always use it like this
+		else if (isset($_POST['createFile'])){
+			$sqlSelect = "SELECT stu_lastname, stu_firstname, stu_email, stu_friendliness, stu_birthdate FROM student";
+
+			$pdoStatement= $pdo->query($sqlSelect);
+
+			if ($pdoStatement && $pdoStatement->rowCount()>0){
+				$fileCreate = fopen(__DIR__.'/csv/export-'.date('Ymd').'csv', "w");
+				if ($fileCreate){
+					while (($row = $pdoStatement->fetch(PDO::FETCH_ASSOC)) !== false){
+						//to check the content of the rows print_pre($row);
+						//create a csv line
+						$line = implode(';', $row);
+						$fwrite($fileCreate, $line, PHP_EOL);
+					}//closes while
+					fclose($fileCreate);
+				}//closes if ($fileCreate)
+
+			}//closes if rowCount
+		}//closes else if $_POST['createFile']
+
+
+
 
 
 
