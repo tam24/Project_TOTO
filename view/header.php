@@ -33,17 +33,23 @@
          </li>
 
          <li class="nav-item">
-           <a class="nav-link disabled" href="list.php">All students</a>
+           <a class="nav-link" href="list.php">All students</a>
          </li>
          <li class="nav-item">
-           <a class="nav-link disabled" href="add.php">Add a student</a>
+           <a class="nav-link" href="add.php">Add a student</a>
          </li>
 
          <li class="nav-item">
-           <a class="nav-link disabled" href="formcsv.php">CSV Form</a>
+           <a class="nav-link" href="formcsv.php">CSV Form</a>
          </li>
 
+         <li class="nav-item">
+           <a class="nav-link" href="signup.php">Sign Up </a>
+         </li>
 
+         <li class="nav-item">
+           <a class="nav-link" href="signin.php">Sign In </a>
+         </li>
        </ul>
 
        <form class="form-inline my-2 my-lg-0">

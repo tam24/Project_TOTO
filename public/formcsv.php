@@ -77,7 +77,39 @@
 		    fclose($fileOpen);
 		}//closes fileopen fgets
 
-		//for creating a csv file 'createFile' comes from name in the input of html, always use it like this
+		// Si Export
+			else if (isset($_POST['csvGeneration'])) {
+				$sql = '
+					SELECT stu_lastname, stu_firstname, stu_email, stu_friendliness, stu_birthdate
+					FROM student
+				';
+				$pdoStatement = $pdo->query($sql);
+				if ($pdoStatement && $pdoStatement->rowCount() > 0) {
+					$exportFilename = 'export-'.date('Ymd').'.csv';
+					// Je vérifie si il existe
+					if (file_exists($exportFilename)) {
+						// Je supprime le fichier existant
+						unlink($exportFilename);
+					} //closes if
+					// J'ouvre le fichier en écriture
+					$fw = fopen($exportFilename, 'w');
+					if ($fw) {
+						while (($row = $pdoStatement->fetch(PDO::FETCH_ASSOC)) !== false) {
+							// Je crée la ligne du CSV
+							$line = implode(';', $row);
+							// J'ajoute la ligne au fichier
+							fwrite($fw, $line.PHP_EOL);
+						}//closes while
+						fclose($fw);
+					}//closes if
+				}//closes main if
+			}//closes else if
+		
+
+
+
+
+		/*for creating a csv file 'createFile' comes from name in the input of html, always use it like this
 		else if (isset($_POST['createFile'])){
 			$sqlSelect = "SELECT stu_lastname, stu_firstname, stu_email, stu_friendliness, stu_birthdate FROM student";
 
@@ -97,7 +129,7 @@
 
 			}//closes if rowCount
 		}//closes else if $_POST['createFile']
-
+*/
 
 
 
