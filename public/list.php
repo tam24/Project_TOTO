@@ -50,16 +50,15 @@
   $studentId = isset($_GET['stu_id']) ? trim($_GET['stu_id']) : '';
 
   if (!empty($studentId)) {
-      var_dump($studentId);
-      exit;
+      //to check if there is a correct retrieval of id var_dump($studentId);
+      //exit;
       $sqlDelete = "DELETE FROM student WHERE stu_id = :student_id";
 
       $pdoStatement = $pdo->prepare($sqlDelete);
-      $pdoStatement ->bindValue(':student_id', $_GET['student_id'], PDO::PARAM_INT);
-      $pdoStatement->execute();
+      $pdoStatement ->bindValue(':student_id', $studentId, PDO::PARAM_INT);
 
-      if ($pdoStatement === false) {
-          print_r($pdo->errorInfo());
+      if ($pdoStatement->execute() === false) {
+          print_r($pdoStatement->errorInfo());
           exit;
       }
   }//closes if for studentId deletion

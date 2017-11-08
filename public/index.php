@@ -1,4 +1,3 @@
-<pre>
 <?php
 
 // Iclude configuration
@@ -6,7 +5,8 @@ require_once __DIR__.'/../inc/config.php';
 
 //joins to retrieve the session
 
-$sqlSelect = "SELECT tra_name, ses_id, ses_number, ses_start_date, ses_end_date FROM session
+$sqlSelect = "SELECT tra_name, ses_id, ses_number, ses_start_date, ses_end_date
+FROM session
 INNER JOIN location ON session.location_loc_id = location.loc_id
 INNER JOIN training ON training.tra_id = session.training_tra_id
 ";
@@ -19,15 +19,15 @@ if ($pdoStatement === false) {
 }
 
 $rowRetrieved = $pdoStatement->fetchAll(PDO::FETCH_ASSOC);
-print_r($rowRetrieved);
+//print_r($rowRetrieved);
 
 foreach ($rowRetrieved as $index=>$value) {
-    foreach ($value as $indexName=>$content) { //
-        $newArray[$content]=[$content];  //
-    }// closes foreach
+    $sessionName = $value['tra_name'];
+    $newArray[$sessionName][]=$value;
+
 }// closes foreach
-echo 'new Array';
-print_r($newArray);
+//echo 'new Array';
+//print_r($newArray);
 
 
 
@@ -37,4 +37,3 @@ require_once __DIR__.'/../view/home.php';
 require_once __DIR__.'/../view/footer.php';
 
 ?>
-</pre>

@@ -3,19 +3,20 @@
   <div class="card-body">
     <table>
       <?php foreach ($newArray as $index=>$content): ?>
-        <?php foreach ($content as $index2=>$contentToDisplay): ?>
-          <thead>
-            <tr>
-              <th>Table header<?php echo $index2 ?></th>
-            </tr>
-            </thead>
-            <tbody>
-              <tr>
-                <td>interior <?php echo $contentToDisplay ?></td>
-              </tr>
+        <thead>
+          <tr>
+            <th>Table header <?php echo $index ?></th>
+          </tr>
+        </thead>
 
-            </tbody>
-          <?php endforeach; ?>
+        <?php foreach ($content as $index2=>$value): ?>
+        <tbody>
+          <tr>
+            <td> <?php echo 'Session '.$value['ses_number'].' '.$value['ses_start_date'].' '.$value['ses_end_date']?></td>
+
+          </tr>
+        </tbody>
+        <?php endforeach; ?>
       <?php endforeach; ?>
     </table>
 

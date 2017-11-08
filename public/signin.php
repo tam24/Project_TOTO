@@ -8,7 +8,7 @@
 
   //data retrieval from the POST method
   if (!empty($_POST)){
-    print_r ($_POST);
+    //print_r ($_POST);
     $email = isset($_POST['email']) ? $_POST['email'] : '';
     $password = isset($_POST['password']) ? $_POST['password'] : '';
 
@@ -37,24 +37,31 @@
     //Once everything is OK then the data can be transfered
     if ($formOk) {
     //if everything is OK then verify that the user exist
-    echo '<br>Everything oK';
+    echo '<br>Everything oK<br>';
 
-    $sqlSelect = "SELECT usr_role, usr_password FROM users WHERE usr_email = :email";
+    $sqlSelect = "SELECT usr_role, usr_password, usr_id FROM users WHERE usr_email = :email";
 
     $pdoStatement = $pdo->prepare($sqlSelect);
     $pdoStatement->bindValue (':email', $email, PDO::PARAM_STR);
     $pdoStatement->execute();
 
     $rowRetrieved = $pdoStatement->fetch(PDO::FETCH_ASSOC);
-    print_r($rowRetrieved);
+    //print_r($rowRetrieved);
 
       if (!empty($rowRetrieved)){
         $pswdDb = $rowRetrieved['usr_password'];
-        print_r($pswdDb).'<br>';
+        $idDb = $rowRetrieved['usr_id'];
+        $useRole = $rowRetrieved['usr_role'];
+        //print_r($pswdDb).'<br>';
+
+        //retrieve user type admin or user
+        $_SESSION['Role'] = $useRole;
 
         $checkPswd = password_verify($password, $pswdDb);
-        var_dump($checkPswd);
+        //var_dump($checkPswd);
         //display id and ip address
+        echo '<br>HI! '.$idDb.' PSWD OK<br>';
+
         /*whether ip is from share internet
         $ip_address = $_SERVER['HTTP_CLIENT_IP'];
         echo $ip_address;
@@ -63,7 +70,14 @@
         echo $ip_address; */
         //whether ip is from remote address
         $ip_address = $_SERVER['REMOTE_ADDR'];
-        var_dump ($ip_address);
+        //var_dump ($ip_address);
+        echo '<br>IP is '.$ip_address;
+
+        $displaySession = $_SESSION['User ID'] = $idDb;
+        //print_r ($_SESSION);
+        echo '<br>Session ID '.$displaySession;
+
+
 
       }//closes if (!empty($rowRetrieved))
       else{

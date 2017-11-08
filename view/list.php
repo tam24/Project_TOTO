@@ -19,7 +19,7 @@
         <td><?php echo $rowValues['stu_birthdate']?></td>
         <td><a href="student.php?id=<?php echo $rowValues['stu_id']?>" class="btn btn-success"> Details </a> </td>
         <td><form name="student_id" method="GET">
-          <button type="submit" class="btn btn-danger" value="<?php $stu_id=$rowValues['stu_id']?>">Delete <?php echo $stu_id?></button>
+          <button type="submit" class="btn btn-danger" name="stu_id" value="<?= $stu_id=$rowValues['stu_id']?>">Delete </button>
         </form></td>
 
       </tr>

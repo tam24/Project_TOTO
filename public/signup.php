@@ -50,7 +50,7 @@
     $pdoStatement->execute();
 
     $nbRows = $pdoStatement->rowCount ();
-    
+
     print_r($nbRows);
 
     //if the user doesn't exist push data into db
@@ -59,11 +59,12 @@
         //encript password
         $encriptPswd =password_hash($password,PASSWORD_BCRYPT);
 
-        $sqlInsert = "INSERT INTO users (usr_email, usr_password) VALUES (:email, :password)";
+        $sqlInsert = "INSERT INTO users (usr_email, usr_password, usr_role) VALUES (:email, :password, :role)";
 
         $pdoStatement = $pdo->prepare($sqlInsert);
         $pdoStatement ->bindValue (':email', $email, PDO::PARAM_STR);
         $pdoStatement ->bindValue (':password', $encriptPswd, PDO::PARAM_STR);
+        $pdoStatement ->bindValue (':role', 'user', PDO::PARAM_STR);
         $pdoStatement->execute();
 
         echo '<br>perfect user added!';
