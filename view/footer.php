@@ -1,6 +1,6 @@
 </body>
 <footer>
-  <?php echo date('Y').'<span><strong>© | All rights reserved</span></strong>';
+  <?php '<span><strong>©.'echo date('Y').' | All rights reserved</span></strong>';
   ?><br></br>
   <a href="<?=$page->facebook->shareUrl?>">Facebook</a>
   <a href="<?=$page->twitter->shareUrl?>">Twitter</a>
