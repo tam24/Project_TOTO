@@ -2,8 +2,8 @@
 use PHPMailer\PHPMailer\PHPMailer;
 use PHPMailer\PHPMailer\Exception;
 
-//Load composer's autoloader
-require '../vendor/autoload.php';
+//Load composer's autoloader not required here if it is already called in config.php
+//require '../vendor/autoload.php';
 //(user email,subject, htmlcontent link do reset pswd, )
 function sendEmail ($to, $subject, $htmlContent, $textContent=''){
   global $config;
