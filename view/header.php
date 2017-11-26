@@ -43,6 +43,10 @@
            <a class="nav-link" href="list.php">All students</a>
          </li>
 
+         <li class="nav-item">
+           <a class="nav-link" href="form.php">NEW FORM</a>
+         </li>
+
          <?php if (!empty($_SESSION)  && !empty($_SESSION['Role']=='admin') ):?>
          <li class="nav-item">
            <a class="nav-link" href="add.php">Add a student</a>
