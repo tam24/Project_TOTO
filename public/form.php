@@ -71,7 +71,7 @@ if (!empty($_POST)) {
 		// Je n'affiche pas le formulaire
 		$displayForm = false;
     }
-    
+
 
 }
 
@@ -88,7 +88,14 @@ if (!empty($_POST)) {
 	<!-- Optional theme -->
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous">
 </head>
+
 <body>
+	<!-- JQuery full version -->
+	 <script
+		 src="https://code.jquery.com/jquery-3.2.1.js"
+		 integrity="sha256-DZAnKJ/6XZ9si04Hgrsxu/8s717jcIzLy3oi35EouyE="
+		 crossorigin="anonymous"></script>
+
 	<div class="container">
 		<br>
 		<?php if ($displayForm) : ?>
@@ -113,25 +120,28 @@ if (!empty($_POST)) {
 						<input type="text" name="phoneToto" class="form-control" value="<?php echo $phone; ?>" /><br />
 						<br>
 						<!--<input type="submit" class="btn btn-success" value="Valider" /> change SUBMIT to BUTTON -->
-                        <button id="btn">SUBMIT</button>
-                        <script type="text/javascript">
-                        $('#btn').on('click', function(e) {
-                            e.preventDefault();
-                        
-                            $.ajax({
-                            url : 'ajax/country.php',
-                            dataType : 'json',
-                            method : 'POST',
-                            data: $(#myform).serialize
-                            })
+            <button id="btn">SUBMIT</button>
+
+						<script type="text/javascript">
+              $('#btn').on('click', function(e) {
+								e.preventDefault();
+							});
+
+							$.ajax({
+                  url : 'country.php',
+                  dataType : 'json',
+                  method : 'POST',
+                  data: $(#myform).serialize
+              })
 
 					</fieldset>
 				</form>
-			</div>	
+			</div>
 		</div>
 		<?php endif; ?>
 	</div>
-		
+
+
 	<!-- Latest compiled and minified JavaScript -->
 	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
 </body>

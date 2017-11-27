@@ -1,8 +1,10 @@
 <?php
+require_once __DIR__.'/../inc/config.php';
+
 print_r($_POST);
 
 if (!empty($_POST)) {
-    $sqlSelect = "SELECT stu_lastname, stu_firstname, stu_email, stu_birthdate, stu_friendliness     
+    $sqlSelect = "SELECT stu_lastname, stu_firstname, stu_email, stu_birthdate, stu_friendliness
     WHERE stu_email = :email";
 
     $pdoStatement = $pdo->prepare($sqlSelect);
@@ -13,11 +15,16 @@ if (!empty($_POST)) {
 
     if (!empty($rowRetrieved)){
         $idDb = $rowRetrieved['usr_id'];
-        echo '<br> User ID: '.$idDb; 
+        echo '<br> User ID: '.$idDb;
     }else {
-        echo '<br> student not found '; 
+        echo '<br> student not found ';
         die('0');
     }
 
 }// closes if (!empty($_POST)
+
+// At the end, display all views
+require_once __DIR__.'/../view/header.php';
+require_once __DIR__.'/../view/country.php';
+require_once __DIR__.'/../view/footer.php';
 ?>
